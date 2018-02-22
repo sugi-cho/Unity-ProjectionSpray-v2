@@ -23,3 +23,7 @@
 ## 06 spot drawing
 
 ![draw](imgs/spotDraw.gif)
+
+## model
+
+[Happy Buddha(Stanford)](http://graphics.stanford.edu/data/3Dscanrep/)
