@@ -1,5 +1,9 @@
 # Unity-SpotDrawing
 
+![editor](imgs/unity-editor.png)
+
+visualize lighting and shadow without Unity's built-in light.
+
 ## 01 view normal
 
 ![viewNormal](imgs/buddha_normal.png)
