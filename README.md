@@ -1,5 +1,4 @@
-# Unity-SpotDrawing
-
+# ProjectionSpray
 ![editor](imgs/unity-editor.png)
 
 visualize lighting and shadow without Unity's built-in light.
