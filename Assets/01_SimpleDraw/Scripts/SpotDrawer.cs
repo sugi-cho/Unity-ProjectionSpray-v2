@@ -2,18 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpotDrawer : MonoBehaviour {
+using UnityEngine.Rendering.Universal;
+
+public class SpotDrawer : MonoBehaviour
+{
 
     public Material drawingMat;
-    
+
     public float intencity = 1f;
     public Color color = Color.white;
     [Range(0.01f, 90f)] public float angle = 30f;
     public float range = 10f;
     public Texture cookie;
     public int shadowMapResolution = 1024;
+    public int depthRendererIdx = 1;
 
-    Shader depthRenderShader { get { return Shader.Find("Unlit/depthRender"); } }
+    UniversalAdditionalCameraData additionalData;
 
     new Camera camera
     {
@@ -28,10 +32,16 @@ public class SpotDrawer : MonoBehaviour {
                 depthOutput.wrapMode = TextureWrapMode.Clamp;
                 depthOutput.Create();
                 _c.targetTexture = depthOutput;
-                _c.SetReplacementShader(depthRenderShader, "RenderType");
                 _c.clearFlags = CameraClearFlags.Nothing;
                 _c.nearClipPlane = 0.01f;
                 _c.enabled = false;
+
+            }
+            if (additionalData == null)
+            {
+                additionalData = _c.GetComponent<UniversalAdditionalCameraData>();
+                if (additionalData != null)
+                    additionalData.SetRenderer(depthRendererIdx);
             }
             return _c;
         }
